@@ -52,6 +52,21 @@ const Task = (props) => {
                     >
                         {props.description}
                     </Typography>
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'baseline',
+                            mb: 2,
+                            padding: '20px'
+                        }}
+
+                    >
+                        <Typography component="p" variant="subtitle2" color="text.primary">
+                            {props.priority} Priority
+                        </Typography>
+                    </Box>
+
                 </CardContent>
                 <CardActions sx={{ justifyContent: 'space-between', padding: '20px' }}>
                     <Button variant="contained" size="small" color="success" onClick={props.markDone}>

@@ -10,9 +10,9 @@ import Grid from '@mui/material/Grid';
 function App() {
   const [taskState, setTaskState] = useState({
     tasks: [
-      { id: 1, title: "Dishes", description: "Empty dishwasher", deadline: "Today", done: false },
-      { id: 2, title: "Laundry", description: "Fold clothes and put away", deadline: "Tomorrow", done: false },
-      { id: 3, title: "Tidy up", deadline: "Today", done: false }
+      { id: 1, title: "Dishes", description: "Empty dishwasher", deadline: "Today", done: false, priority: "Low" },
+      { id: 2, title: "Laundry", description: "Fold clothes and put away", deadline: "Tomorrow", done: false, priority: "Medium" },
+      { id: 3, title: "Tidy up", deadline: "Today", done: false, priority: "High" }
     ]
   });
 
@@ -31,7 +31,8 @@ function App() {
   const [formState, setFormState] = useState({
     title: "",
     description: "",
-    deadline: ""
+    deadline: "",
+    priority: ""
   });
 
   const formChangeHandler = (event) => {
@@ -47,8 +48,11 @@ function App() {
       case "deadline":
         form.deadline = event.target.value;
         break;
+      case "priority":
+        form.priority = event.target.value;
+        break;
       default:
-        form = formState;
+        break;
     }
     console.log(formState);
     setFormState(form);
@@ -97,6 +101,7 @@ function App() {
               deadline={task.deadline}
               done={task.done}
               key={task.id}
+              priority={task.priority}
               markDone={() => doneHandler(index)}
               deleteTask={() => deleteHandler(index)}
             />
@@ -107,8 +112,8 @@ function App() {
 
 
 
-            {/* Footer - Add Task Form */}
-            <Container
+      {/* Footer - Add Task Form */}
+      <Container
         component="footer"
         sx={{
           borderTop: (theme) => `1px solid ${theme.palette.divider}`,
